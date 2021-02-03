@@ -10,9 +10,9 @@ This example uses three charts available from this repo: https://github.com/prom
 
 The Charts are:
 
-- ![alertmanager](https://github.com/prometheus-community/helm-charts/tree/main/charts/alertmanager)
-- ![prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)
-- ![prometheus-postgres-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-postgres-exporter)
+- [alertmanager](https://github.com/prometheus-community/helm-charts/tree/main/charts/alertmanager)
+- [prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)
+- [prometheus-postgres-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-postgres-exporter)
 
 
 #### Folder Structure
