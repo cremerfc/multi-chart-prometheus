@@ -1,1 +1,2 @@
-deps/
+kots/deps
+kots/manifests/*.tgz
