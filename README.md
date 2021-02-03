@@ -18,15 +18,15 @@ In this example the directories for each Helm Chart is at the root of this repos
 
 The CI/CD process would consist of two steps:
 
-1. Pakcage the Chart and put the tar.gz output in the manifests directory.
+1. For each Chart, pakcage it and put the `tar.gz` output in the `kots/manifests` directory.
 
-2. Run the Replicated CLI to create a release and promote to channel.
+2. Run the Replicated CLI to create a release that includes the `tar.gz` for each chart and promote to channel.
 
 Assuming that that the current directory is the root directory, a CI/CD process would look similar to this:
 
 ``` shell
-	helm dependencies update alertmanager
-	helm package alertmanager -d kots/manifests/
+  helm dependencies update alertmanager
+  helm package alertmanager -d kots/manifests/
 
   helm dependencies update prometheus
   helm package prometheus -d kots/manifests/
