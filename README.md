@@ -1,17 +1,42 @@
-Replicated Kubernetes Starter
+Replicated KOTS Multi Chart Example
 ==================
 
-Example project showcasing how power users can leverage the Replicated CLI Tools to manage kots YAMLs using a git repository.
+Example project to show how to manage an application that is comprised of multiple charts.
 
-### Get started
 
-This repo is a [GitHub Template Repository](https://help.github.com/en/articles/creating-a-repository-from-a-template). You can create a private copy by using the "Use this Template" link in the repo:
+#### Sample Charts
 
-![Template Repo](https://help.github.com/assets/images/help/repository/use-this-template-button.png)
+This example contains some of the charts available from this repo: https://github.com/prometheus-community/helm-charts
 
-You should use the template to create a new **private** repo in your org, for example `mycompany/kots-app` or `mycompany/replicated-starter-kots`.
 
-Once you've created a repository from the template, you'll want to `git clone` your new repo and `cd` into it locally.
+#### Folder Structure
+
+In this example the directories for each Helm Chart is at the root of this repostiroy. There is also a `kots` directory which contains the replicated YAML files.
+
+
+#### CI/CD Process
+
+The CI/CD process would consist of two steps:
+
+1. Pakcage the Chart and put the tar.gz output in the manifests directory.
+
+2. Run the Replicated CLI to create a release and promote to channel.
+
+Assuming that that the current directory is the root directory, a CI/CD process would look similar to this:
+
+``` shell
+	helm dependencies update alertmanager
+	helm package alertmanager -d kots/manifests/
+
+  helm dependencies update prometheus
+  helm package prometheus -d kots/manifests/
+
+  helm dependencies update prometheus-postgres-exporter
+  helm package prometheus-postgres-exporter -d kots/manifests/
+
+  replicated release create --yaml-dir=kots/manifests/ --auto -y
+```
+
 
 
 #### Install CLI
